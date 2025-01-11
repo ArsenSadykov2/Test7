@@ -1,0 +1,52 @@
+button {
+    transition: background-color 0.2s ease-in-out;
+}
+
+button:hover {
+    background-color: #0056b3;
+}
+
+.container {
+    margin-top: 50px;
+}
+
+h5, h4 {
+    font-weight: bold;
+}
+
+.left-panel, .right-panel {
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    padding: 20px;
+    background-color: #f9f9f9;
+}
+
+.left-panel {
+    min-width: 250px;
+}
+
+.right-panel {
+    min-width: 300px;
+}
+
+img {
+    border-radius: 5px;
+    margin-right: 10px;
+}
+
+.remove-btn {
+    border-radius: 5px;
+    background-color: red;
+    color: white;
+    border: none;
+    padding: 5px 10px;
+    background: url("assets/delete.png") center center no-repeat;
+    background-size: 20px 20px;
+    width: 30px;
+    height: 30px;
+    display: inline-block;
+}
+
+.remove-btn:hover {
+    background-color: darkred;
+}

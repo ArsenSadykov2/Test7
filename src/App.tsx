@@ -92,12 +92,12 @@ const App = () => {
       return (
           <div key={ingred.name} className="d-flex justify-content-between align-items-center">
             <div>
-              <img width={30} src={menuItem.image} alt={ingred.name} />
+              <img width={30} src={menuItem.image} alt={ingred.name}/>
               <span>{ingred.name} x {ingred.count}</span>
             </div>
             <div>
               <span>{(ingred.count * menuItem.price)} Som</span>
-              <button onClick={() => RemoveIngredient(ingred.name)} className="btn-sm ml-2">
+              <button onClick={() => RemoveIngredient(ingred.name)} className="btn-sm ml-2 remove-btn">
               </button>
             </div>
           </div>
@@ -109,14 +109,14 @@ const App = () => {
       <>
         <div className="container my-2">
           <div className="row justify-content-between">
-            <div className="border border-black col m-2 ">
+            <div className="border border-black col m-2 left-panel">
               <h5 className="mt-2 text-primary">Add Items</h5>
               <div className="row row-cols-2">
                 <div className="col">
                   {Menu.map((item) => (
                       <div key={item.name} className="mb-2 rounded">
                         <button onClick={() => AddIngredient(item.name)} type="button"
-                                className="btn btn-outline-primary w-100">
+                                className="btn btn-outline-primary w-100 ">
                           <img width={60} src={item.image} alt={item.name}/>
                           <div>{item.name}</div>
                           <div>{item.price} Som</div>
@@ -126,12 +126,13 @@ const App = () => {
                 </div>
               </div>
             </div>
-            <div className="border border-black col align-self-center">
+            <div className="border border-black col align-self-center right-panel">
               <h4 className="mt-2 text-primary">Order Details</h4>
               <hr/>
               {getMenu()}
               <hr/>
-              <h5 className="text-primary">Total Price:{total} + Service(45) Som</h5>
+              <h5 className="text-danger">Service(45) Som</h5>
+              <h5 className="text-primary">Total Price:{total} Som</h5>
             </div>
           </div>
         </div>
