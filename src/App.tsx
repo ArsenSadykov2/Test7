@@ -74,6 +74,37 @@ const App = () => {
     setTotal(totalPrice);
   };
 
+  const getMenu = () => {
+    const newIngredients = orderItems.filter(item => {
+      if(item.count > 0) {
+        return item;
+      }
+    });
+    if (orderItems.length === 0) {
+      return <p>Order is empty! Please add some items.</p>;
+    }
+    return newIngredients.map(ingred => {
+      const menuItem = Menu.find(menu => {
+        if(menu.name === ingred.name){
+          return ingred;
+        }
+      });
+      return (
+          <div key={ingred.name} className="d-flex justify-content-between align-items-center">
+            <div>
+              <img width={30} src={menuItem.image} alt={ingred.name} />
+              <span>{ingred.name} x {ingred.count}</span>
+            </div>
+            <div>
+              <span>{(ingred.count * menuItem.price)} Som</span>
+              <button onClick={() => RemoveIngredient(ingred.name)} className="btn-sm ml-2">
+              </button>
+            </div>
+          </div>
+      );
+    });
+  };
+
   return (
       <>
         <div className="container my-2">
@@ -98,7 +129,7 @@ const App = () => {
             <div className="border border-black col align-self-center">
               <h4 className="mt-2 text-primary">Order Details</h4>
               <hr/>
-              Здесь Будет Заказ
+              {getMenu()}
               <hr/>
               <h5 className="text-primary">Total Price:{total} + Service(45) Som</h5>
             </div>
