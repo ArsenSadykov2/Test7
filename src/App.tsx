@@ -28,6 +28,17 @@ const App = () => {
     {name: 'Cola', count: 0},
   ]);
 
+  const AddIngredient = (nameIngred: string) => {
+    const countIngredients = ingredients.map(ingred => {
+      if(ingred.name === nameIngred) {
+        return {
+          ...ingred,
+          count: ingred.count + 1,
+        }
+      }
+      return ingred;
+    });
+  }
 
   return (
       <>
@@ -39,7 +50,7 @@ const App = () => {
                 <div className="col">
                   {Menu.map((item) => (
                       <div key={item.name} className="mb-2 rounded">
-                        <button type="button"
+                        <button onClick={() => AddIngredient(item.name)} type="button"
                                 className="btn btn-outline-primary w-100">
                           <img width={60} src={item.image} alt={item.name}/>
                           <div>{item.name}</div>
