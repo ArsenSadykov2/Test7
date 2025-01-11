@@ -50,7 +50,29 @@ const App = () => {
     }, 45);
     setOrderItems(countIngredients );
     setTotal(totalPrice);
-  }
+  };
+
+  const RemoveIngredient = (nameIngred: string) => {
+    const countIngredients = orderItems.map(ingred => {
+      if (ingred.name === nameIngred && ingred.count > 0) {
+        return {
+          ...ingred,
+          count: ingred.count - 1,
+        };
+      }
+      return ingred;
+    });
+    const totalPrice = Menu.reduce((acc, ingredient) => {
+      countIngredients.forEach(item => {
+        if (ingredient.name === item.name && item.count > 0) {
+          acc = acc + item.count * ingredient.price;
+        }
+      });
+      return acc;
+    }, 45);
+    setOrderItems(countIngredients);
+    setTotal(totalPrice);
+  };
 
   return (
       <>
