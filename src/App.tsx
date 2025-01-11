@@ -5,9 +5,9 @@ import cola from './assets/cola.png';
 import tea from './assets/tea.png';
 import coffee from './assets/coffee.png';
 import burger from './assets/burger.png';
-import {MenuItems} from "./types";
 import 'bootstrap/dist/css/bootstrap.min.css';
 import {useState} from "react";
+import {MenuItems} from "./assets/types";
 
 const App = () => {
   const Menu: MenuItems[] = [
@@ -28,8 +28,10 @@ const App = () => {
     {name: 'Cola', count: 0},
   ]);
 
+  const [total, setTotal] = useState(0);
+
   const AddIngredient = (nameIngred: string) => {
-    const countIngredients = ingredients.map(ingred => {
+    const countIngredients = orderItems.map(ingred => {
       if(ingred.name === nameIngred) {
         return {
           ...ingred,
@@ -38,6 +40,16 @@ const App = () => {
       }
       return ingred;
     });
+    const totalPrice = Menu.reduce((acc, ingredient) => {
+      countIngredients.forEach(item => {
+        if(ingredient.name === item.name && item.count > 0) {
+          acc = acc + item.count * ingredient.price;
+        }
+      });
+      return acc;
+    }, 45);
+    setOrderItems(countIngredients );
+    setTotal(totalPrice);
   }
 
   return (
@@ -66,7 +78,7 @@ const App = () => {
               <hr/>
               Здесь Будет Заказ
               <hr/>
-              <h5 className="text-primary">Total Price: Som</h5>
+              <h5 className="text-primary">Total Price:{total} + Service(45) Som</h5>
             </div>
           </div>
         </div>
