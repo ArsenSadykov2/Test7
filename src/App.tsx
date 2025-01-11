@@ -30,9 +30,36 @@ const App = () => {
 
 
   return (
-    <>
-
-    </>
+      <>
+        <div className="container my-2">
+          <div className="row justify-content-between">
+            <div className="border border-black col m-2 ">
+              <h5 className="mt-2 text-primary">Add Items</h5>
+              <div className="row row-cols-2">
+                <div className="col">
+                  {Menu.map((item) => (
+                      <div key={item.name} className="mb-2 rounded">
+                        <button type="button"
+                                className="btn btn-outline-primary w-100">
+                          <img width={60} src={item.image} alt={item.name}/>
+                          <div>{item.name}</div>
+                          <div>{item.price} Som</div>
+                        </button>
+                      </div>
+                  ))}
+                </div>
+              </div>
+            </div>
+            <div className="border border-black col align-self-center">
+              <h4 className="mt-2 text-primary">Order Details</h4>
+              <hr/>
+              Здесь Будет Заказ
+              <hr/>
+              <h5 className="text-primary">Total Price: Som</h5>
+            </div>
+          </div>
+        </div>
+      </>
   )
 };
 
